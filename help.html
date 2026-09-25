@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تسویه حساب | مُدرا — قالب فروشگاه پوشاک</title>
-<meta name="description" content="تسویه حساب امن فروشگاه مُدرا؛ وارد کردن آدرس، انتخاب روش ارسال و پرداخت آنلاین.">
+<title>راهنمای قالب | مُدرا — قالب فروشگاه پوشاک</title>
+<meta name="description" content="راهنمای نصب و شخصی‌سازی قالب فروشگاه مُدرا برای خریداران.">
 <meta name="theme-color" content="#191612">
-<meta property="og:title" content="تسویه حساب | مُدرا">
-<meta property="og:description" content="تسویه حساب امن فروشگاه مُدرا؛ وارد کردن آدرس، انتخاب روش ارسال و پرداخت آنلاین.">
+<meta property="og:title" content="راهنمای قالب | مُدرا">
+<meta property="og:description" content="راهنمای نصب و شخصی‌سازی قالب فروشگاه مُدرا برای خریداران.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/hero1.jpg">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
@@ -15,10 +15,10 @@
 <link rel="stylesheet" href="assets/fonts/vazirmatn.css">
 <link rel="stylesheet" href="assets/css/style.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ClothingStore","name":"مُدرا | فروشگاه پوشاک","description":"تسویه حساب امن فروشگاه مُدرا؛ وارد کردن آدرس، انتخاب روش ارسال و پرداخت آنلاین.","priceRange":"$$$","address":{"@type":"PostalAddress","addressLocality":"تهران","addressCountry":"IR"},"telephone":"+98-21-91009000"}
+{"@context":"https://schema.org","@type":"ClothingStore","name":"مُدرا | فروشگاه پوشاک","description":"راهنمای نصب و شخصی‌سازی قالب فروشگاه مُدرا برای خریداران.","priceRange":"$$$","address":{"@type":"PostalAddress","addressLocality":"تهران","addressCountry":"IR"},"telephone":"+98-21-91009000"}
 </script>
 </head>
-<body data-page="checkout">
+<body data-page="help">
 <a class="skip" href="#main">پرش به محتوا</a>
 <!-- ══════════ TOPBAR ══════════ -->
 <div class="topbar">
@@ -100,60 +100,54 @@
 <main id="main">
 <div class="page-head">
   <div class="container">
-    <nav class="breadcrumb"><a href="index.html">خانه</a> / <a href="cart.html">سبد خرید</a> / <span>تسویه حساب</span></nav>
-    <h1>💳 تسویه حساب</h1>
-    <p>فقط چند قدم تا رسیدن سفارشت مونده!</p>
+    <nav class="breadcrumb"><a href="index.html">خانه</a> / <span>راهنمای قالب</span></nav>
+    <h1>📖 راهنمای قالب مُدرا <small style="font-size:14px;background:var(--ink);color:#fff;padding:3px 14px;border-radius:99px;vertical-align:middle">v1.1</small></h1>
+    <p>این صفحه مخصوص خریدار قالبه — نصب، شخصی‌سازی و اتصال به بک‌اند در ۱۰ دقیقه</p>
   </div>
 </div>
-<div class="container">
-  <div class="steps" id="coSteps">
-    <div class="step on"><i>۱</i>اطلاعات ارسال</div>
-    <div class="step"><i>۲</i>روش ارسال و پرداخت</div>
-    <div class="step"><i>۳</i>تایید و ثبت سفارش</div>
+<div class="container" style="display:grid;gap:20px;max-width:900px">
+  <div class="co-card">
+    <h3><span class="n">۱</span> شروع سریع (۲ دقیقه)</h3>
+    <p style="font-size:14px;margin-bottom:12px">قالب هیچ بیلدی لازم نداره؛ فقط سرو کن:</p>
+    <div class="codebox" dir="ltr">cd lebass<br>python3 -m http.server 8000<br># → http://localhost:8000</div>
+    <p style="font-size:13.5px;margin-top:12px">یا کل پوشه رو روی هاست / GitHub Pages آپلود کن. اگه فایل‌های <b dir="ltr">tpl/</b> رو ویرایش کردی، بیلد بگیر:</p>
+    <div class="codebox" dir="ltr">python3 tools/build.py</div>
   </div>
-  <div id="coWrap">
-    <div class="co-layout">
-      <div>
-        <div class="co-card">
-          <h3><span class="n">۱</span> آدرس تحویل گیرنده</h3>
-          <div class="form" id="coForm">
-            <div class="two">
-              <label>نام و نام خانوادگی *<input id="coName" placeholder="مثلاً سارا محمدی"></label>
-              <label>شماره موبایل *<input id="coPhone" inputmode="tel" placeholder="09123456789" dir="ltr" style="text-align:start"></label>
-            </div>
-            <div class="two">
-              <label>استان *<select id="coProv"><option>تهران</option><option>البرز</option><option>اصفهان</option><option>فارس</option><option>خراسان رضوی</option><option>آذربایجان شرقی</option><option>خوزستان</option><option>گیلان</option><option>مازندران</option><option>قم</option><option>سایر استان‌ها</option></select></label>
-              <label>شهر *<input id="coCity" placeholder="مثلاً تهران"></label>
-            </div>
-            <label>آدرس کامل *<input id="coAddr" placeholder="خیابان، کوچه، پلاک، واحد…"></label>
-            <div class="two">
-              <label>کد پستی<input id="coPostal" inputmode="numeric" placeholder="۱۰ رقمی (اختیاری)"></label>
-              <label>توضیحات سفارش<input id="coNote" placeholder="اختیاری…"></label>
-            </div>
-          </div>
-        </div>
-        <div class="co-card">
-          <h3><span class="n">۲</span> روش ارسال</h3>
-          <div class="pay-methods" id="shipMethods">
-            <label class="pay-card on" data-ship="std"><input type="radio" name="ship" checked><span class="pm-ic">🚚</span><div><b>ارسال عادی (۲ تا ۴ روز کاری)</b><small>۶۰ هزار تومان — رایگان برای خرید بالای ۸۰۰ هزار تومان 🎉</small></div></label>
-            <label class="pay-card" data-ship="exp"><input type="radio" name="ship"><span class="pm-ic">⚡</span><div><b>ارسال پیشتاز (۱ تا ۲ روز کاری)</b><small>۱۲۰ هزار تومان — اولویت بسته‌بندی و ارسال</small></div></label>
-          </div>
-        </div>
-        <div class="co-card">
-          <h3><span class="n">۳</span> روش پرداخت</h3>
-          <div class="pay-methods" id="payMethods">
-            <label class="pay-card on" data-pay="online"><input type="radio" name="pay" checked><span class="pm-ic">💳</span><div><b>پرداخت آنلاین</b><small>درگاه امن بانکی (شتاب) — سریع و امن</small></div></label>
-            <label class="pay-card" data-pay="card"><input type="radio" name="pay"><span class="pm-ic">🏧</span><div><b>کارت به کارت</b><small>شماره کارت بعد از ثبت سفارش پیامک می‌شود</small></div></label>
-            <label class="pay-card" data-pay="cod"><input type="radio" name="pay"><span class="pm-ic">💵</span><div><b>پرداخت در محل</b><small>فقط تهران و کرج — موقع تحویل پرداخت کن</small></div></label>
-          </div>
-        </div>
-      </div>
-      <aside class="cart-side">
-        <h3 style="font-size:16px;margin-bottom:14px">🧾 خلاصه سفارش</h3>
-        <div id="orderSummary"></div>
-        <button class="btn btn-accent full" id="placeOrder" style="margin-top:14px">ثبت سفارش و پرداخت ←</button>
-        <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px">🔒 با ثبت سفارش، <a href="faq.html" style="font-weight:700">قوانین خرید و مرجوعی</a> را می‌پذیرید.</p>
-      </aside>
+  <div class="co-card">
+    <h3><span class="n">۲</span> ساختار فایل‌ها</h3>
+    <table class="spec-table">
+      <tr><td dir="ltr">assets/js/products.js</td><td><b>★ مهم‌ترین فایل:</b> محصولات، قیمت‌ها، کدهای تخفیف</td></tr>
+      <tr><td dir="ltr">assets/js/main.js</td><td><b>موتور قالب:</b> سبد، فیلتر، جستجو، تسویه (دست نزن مگر حرفه‌ای!)</td></tr>
+      <tr><td dir="ltr">assets/css/style.css</td><td><b>همه استایل‌ها</b> + متغیرهای رنگ در ابتدای فایل</td></tr>
+      <tr><td dir="ltr">assets/img/</td><td><b>عکس‌ها</b> — با عکس‌های خودت جایگزین کن (۳×۴)</td></tr>
+      <tr><td dir="ltr">tpl/partials/</td><td>هدر، فوتر، مودال‌ها (بعدش <b dir="ltr">build.py</b> اجرا کن)</td></tr>
+    </table>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۳</span> افزودن محصول جدید</h3>
+    <p style="font-size:14px;margin-bottom:12px">توی <b dir="ltr">products.js</b> یه آبجکت مثل این به آرایه اضافه کن:</p>
+    <div class="codebox" dir="ltr">{<br>&nbsp;&nbsp;id: 13, name: 'نام محصول', brand: 'مُدرا',<br>&nbsp;&nbsp;cat: 'women', // women | men | shoes | accessory<br>&nbsp;&nbsp;price: 1500000, old: 1800000, // old = null یعنی بدون تخفیف<br>&nbsp;&nbsp;rating: 4.5, reviews: 10, badge: 'new', // new | hot | sale<br>&nbsp;&nbsp;colors: [{ n: 'کرمی', c: '#e3d0ae' }],<br>&nbsp;&nbsp;sizes: ['S','M','L','XL'], img: 'assets/img/p13.jpg',<br>&nbsp;&nbsp;stock: 20, sold: 0, added: 11,<br>&nbsp;&nbsp;tags: ['کلیدواژه'], desc: 'توضیحات…',<br>&nbsp;&nbsp;specs: [['جنس','نخ پنبه']]<br>}</div>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۴</span> تغییر رنگ، لوگو و اطلاعات</h3>
+    <table class="spec-table">
+      <tr><td>رنگ اصلی</td><td>متغیر <b dir="ltr">--accent</b> در خطوط اول <b dir="ltr">style.css</b> (۴ پوسته آماده هم داخل قالب هست)</td></tr>
+      <tr><td>نام فروشگاه</td><td>جستجوی «مُدرا» در فایل‌ها و جایگزینی یکجا</td></tr>
+      <tr><td>تلفن و آدرس</td><td><b dir="ltr">tpl/partials/footer.html</b> و <b dir="ltr">tpl/pages/contact.html</b></td></tr>
+      <tr><td>کدهای تخفیف</td><td>آبجکت <b dir="ltr">coupons</b> در ابتدای <b dir="ltr">products.js</b></td></tr>
+      <tr><td>سقف ارسال رایگان</td><td><b dir="ltr">freeShip</b> در <b dir="ltr">products.js</b></td></tr>
+    </table>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۵</span> اتصال به بک‌اند (وردپرس/لاراول/…)</h3>
+    <p style="font-size:14px;line-height:2.1">قالب فرانت‌اند خالصه و با <b>هر بک‌اندی</b> کار می‌کنه. مسیر پیشنهادی:<br>۱️⃣ به‌جای <b dir="ltr">MODERA_PRODUCTS</b>، از API خودت JSON بگیر و تو همون متغیر بریز — بقیه قالب (سبد، فیلتر، جستجو) بدون تغییر کار می‌کنه.<br>۲️⃣ سبد خرید الان در <b dir="ltr">localStorage</b> ذخیره می‌شه؛ موقع ثبت سفارش، آرایه <b dir="ltr">cart</b> رو با <b dir="ltr">fetch</b> به سرورت بفرست.<br>۳️⃣ درگاه پرداخت: دکمه «ثبت سفارش» (<b dir="ltr">#placeOrder</b> در <b dir="ltr">main.js</b>) رو به درگاه‌ت (زرین‌پال/زیبال) وصل کن.</p>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۶</span> سوالات پرتکرار خریداران</h3>
+    <div class="accordion">
+      <div class="acc-item"><button class="acc-head">فونت از کجا لود می‌شه؟<svg viewBox="0 0 24 24" class="ic"><path d="m6 9 6 6 6-6"/></svg></button><div class="acc-body"><p>فونت وزیرمتن داخل پوشه <b dir="ltr">assets/fonts</b> هست و کاملاً آفلاین کار می‌کنه؛ بدون نیاز به CDN و بدون افت سرعت.</p></div></div>
+      <div class="acc-item"><button class="acc-head">عکس‌ها رو می‌تونم عوض کنم؟<svg viewBox="0 0 24 24" class="ic"><path d="m6 9 6 6 6-6"/></svg></button><div class="acc-body"><p>حتماً! عکس‌های فعلی فقط دمو هستن. عکس‌های خودت رو با همون نام‌ها در <b dir="ltr">assets/img</b> جایگزین کن. نسبت ۳×۴ پیشنهاد می‌شه.</p></div></div>
+      <div class="acc-item"><button class="acc-head">آپدیت بعدی چی داره؟<svg viewBox="0 0 24 24" class="ic"><path d="m6 9 6 6 6-6"/></svg></button><div class="acc-body"><p>طبق نقشه راه: صفحه مقایسه محصول، حالت تیره (دارک‌مود) و نسخه وردپرس/ووکامرس. خریداران آپدیت‌ها رو رایگان می‌گیرن.</p></div></div>
     </div>
   </div>
 </div>

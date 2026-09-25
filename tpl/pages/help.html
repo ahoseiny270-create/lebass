@@ -1,0 +1,54 @@
+<!-- {"title": "راهنمای قالب", "desc": "راهنمای نصب و شخصی‌سازی قالب فروشگاه مُدرا برای خریداران.", "page": "help"} -->
+<div class="page-head">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">خانه</a> / <span>راهنمای قالب</span></nav>
+    <h1>📖 راهنمای قالب مُدرا <small style="font-size:14px;background:var(--ink);color:#fff;padding:3px 14px;border-radius:99px;vertical-align:middle">v1.1</small></h1>
+    <p>این صفحه مخصوص خریدار قالبه — نصب، شخصی‌سازی و اتصال به بک‌اند در ۱۰ دقیقه</p>
+  </div>
+</div>
+<div class="container" style="display:grid;gap:20px;max-width:900px">
+  <div class="co-card">
+    <h3><span class="n">۱</span> شروع سریع (۲ دقیقه)</h3>
+    <p style="font-size:14px;margin-bottom:12px">قالب هیچ بیلدی لازم نداره؛ فقط سرو کن:</p>
+    <div class="codebox" dir="ltr">cd lebass<br>python3 -m http.server 8000<br># → http://localhost:8000</div>
+    <p style="font-size:13.5px;margin-top:12px">یا کل پوشه رو روی هاست / GitHub Pages آپلود کن. اگه فایل‌های <b dir="ltr">tpl/</b> رو ویرایش کردی، بیلد بگیر:</p>
+    <div class="codebox" dir="ltr">python3 tools/build.py</div>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۲</span> ساختار فایل‌ها</h3>
+    <table class="spec-table">
+      <tr><td dir="ltr">assets/js/products.js</td><td><b>★ مهم‌ترین فایل:</b> محصولات، قیمت‌ها، کدهای تخفیف</td></tr>
+      <tr><td dir="ltr">assets/js/main.js</td><td><b>موتور قالب:</b> سبد، فیلتر، جستجو، تسویه (دست نزن مگر حرفه‌ای!)</td></tr>
+      <tr><td dir="ltr">assets/css/style.css</td><td><b>همه استایل‌ها</b> + متغیرهای رنگ در ابتدای فایل</td></tr>
+      <tr><td dir="ltr">assets/img/</td><td><b>عکس‌ها</b> — با عکس‌های خودت جایگزین کن (۳×۴)</td></tr>
+      <tr><td dir="ltr">tpl/partials/</td><td>هدر، فوتر، مودال‌ها (بعدش <b dir="ltr">build.py</b> اجرا کن)</td></tr>
+    </table>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۳</span> افزودن محصول جدید</h3>
+    <p style="font-size:14px;margin-bottom:12px">توی <b dir="ltr">products.js</b> یه آبجکت مثل این به آرایه اضافه کن:</p>
+    <div class="codebox" dir="ltr">{<br>&nbsp;&nbsp;id: 13, name: 'نام محصول', brand: 'مُدرا',<br>&nbsp;&nbsp;cat: 'women', // women | men | shoes | accessory<br>&nbsp;&nbsp;price: 1500000, old: 1800000, // old = null یعنی بدون تخفیف<br>&nbsp;&nbsp;rating: 4.5, reviews: 10, badge: 'new', // new | hot | sale<br>&nbsp;&nbsp;colors: [{ n: 'کرمی', c: '#e3d0ae' }],<br>&nbsp;&nbsp;sizes: ['S','M','L','XL'], img: 'assets/img/p13.jpg',<br>&nbsp;&nbsp;stock: 20, sold: 0, added: 11,<br>&nbsp;&nbsp;tags: ['کلیدواژه'], desc: 'توضیحات…',<br>&nbsp;&nbsp;specs: [['جنس','نخ پنبه']]<br>}</div>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۴</span> تغییر رنگ، لوگو و اطلاعات</h3>
+    <table class="spec-table">
+      <tr><td>رنگ اصلی</td><td>متغیر <b dir="ltr">--accent</b> در خطوط اول <b dir="ltr">style.css</b> (۴ پوسته آماده هم داخل قالب هست)</td></tr>
+      <tr><td>نام فروشگاه</td><td>جستجوی «مُدرا» در فایل‌ها و جایگزینی یکجا</td></tr>
+      <tr><td>تلفن و آدرس</td><td><b dir="ltr">tpl/partials/footer.html</b> و <b dir="ltr">tpl/pages/contact.html</b></td></tr>
+      <tr><td>کدهای تخفیف</td><td>آبجکت <b dir="ltr">coupons</b> در ابتدای <b dir="ltr">products.js</b></td></tr>
+      <tr><td>سقف ارسال رایگان</td><td><b dir="ltr">freeShip</b> در <b dir="ltr">products.js</b></td></tr>
+    </table>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۵</span> اتصال به بک‌اند (وردپرس/لاراول/…)</h3>
+    <p style="font-size:14px;line-height:2.1">قالب فرانت‌اند خالصه و با <b>هر بک‌اندی</b> کار می‌کنه. مسیر پیشنهادی:<br>۱️⃣ به‌جای <b dir="ltr">MODERA_PRODUCTS</b>، از API خودت JSON بگیر و تو همون متغیر بریز — بقیه قالب (سبد، فیلتر، جستجو) بدون تغییر کار می‌کنه.<br>۲️⃣ سبد خرید الان در <b dir="ltr">localStorage</b> ذخیره می‌شه؛ موقع ثبت سفارش، آرایه <b dir="ltr">cart</b> رو با <b dir="ltr">fetch</b> به سرورت بفرست.<br>۳️⃣ درگاه پرداخت: دکمه «ثبت سفارش» (<b dir="ltr">#placeOrder</b> در <b dir="ltr">main.js</b>) رو به درگاه‌ت (زرین‌پال/زیبال) وصل کن.</p>
+  </div>
+  <div class="co-card">
+    <h3><span class="n">۶</span> سوالات پرتکرار خریداران</h3>
+    <div class="accordion">
+      <div class="acc-item"><button class="acc-head">فونت از کجا لود می‌شه؟<svg viewBox="0 0 24 24" class="ic"><path d="m6 9 6 6 6-6"/></svg></button><div class="acc-body"><p>فونت وزیرمتن داخل پوشه <b dir="ltr">assets/fonts</b> هست و کاملاً آفلاین کار می‌کنه؛ بدون نیاز به CDN و بدون افت سرعت.</p></div></div>
+      <div class="acc-item"><button class="acc-head">عکس‌ها رو می‌تونم عوض کنم؟<svg viewBox="0 0 24 24" class="ic"><path d="m6 9 6 6 6-6"/></svg></button><div class="acc-body"><p>حتماً! عکس‌های فعلی فقط دمو هستن. عکس‌های خودت رو با همون نام‌ها در <b dir="ltr">assets/img</b> جایگزین کن. نسبت ۳×۴ پیشنهاد می‌شه.</p></div></div>
+      <div class="acc-item"><button class="acc-head">آپدیت بعدی چی داره؟<svg viewBox="0 0 24 24" class="ic"><path d="m6 9 6 6 6-6"/></svg></button><div class="acc-body"><p>طبق نقشه راه: صفحه مقایسه محصول، حالت تیره (دارک‌مود) و نسخه وردپرس/ووکامرس. خریداران آپدیت‌ها رو رایگان می‌گیرن.</p></div></div>
+    </div>
+  </div>
+</div>

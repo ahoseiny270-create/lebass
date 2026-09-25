@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ahoseiny270-create.github.io/lebass/sitemap.xml

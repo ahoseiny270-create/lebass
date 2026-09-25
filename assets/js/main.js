@@ -5,6 +5,7 @@ const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 const FA = n => Number(n).toLocaleString('fa-IR');
 const money = n => FA(n) + ' تومان';
+const faPad = n => String(n).padStart(2, '0').replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 const store = {
   get: (k, d) => { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
   set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
@@ -169,7 +170,7 @@ function initCountdown() {
     const hh = Math.floor(d / 36e5); d -= hh * 36e5;
     const mm = Math.floor(d / 6e4); const ss = Math.floor((d - mm * 6e4) / 1e3);
     els.forEach(el => {
-      const set = (k, v) => { const e = el.querySelector(`[data-cd="${k}"]`); if (e) e.textContent = FA(String(v).padStart(2, '0')); };
+      const set = (k, v) => { const e = el.querySelector(`[data-cd="${k}"]`); if (e) e.textContent = faPad(v); };
       set('d', dd); set('h', hh); set('m', mm); set('s', ss);
     });
     if (end - Date.now() < 0) { end = Date.now() + 36 * 3600 * 1000; store.set('modera_sale_end', end); }
@@ -344,7 +345,7 @@ function renderShop() {
   if (shopState.cats.size === 1) u.set('cat', [...shopState.cats][0]);
   if (shopState.sale) u.set('sale', '1');
   if (shopState.sort !== 'newest') u.set('sort', shopState.sort);
-  history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u : ''));
+  try { history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u : '')); } catch {}
 }
 
 /* ═══════ صفحه محصول ═══════ */
@@ -364,17 +365,17 @@ function initProduct() {
   <nav class="breadcrumb" style="margin-bottom:18px"><a href="index.html">خانه</a> / <a href="shop.html">فروشگاه</a> / <a href="shop.html?cat=${p.cat}">${CFG.cats[p.cat]}</a> / <span>${p.name}</span></nav>
   <div class="pdp">
     <div class="pdp-gallery">
-      <div class="pdp-main" id="pdpMain"><img id="pdpImg" src="${p.img}" alt="${p.name}"></div>
+      <div class="pdp-main" id="pdpMain"><img id="pdpImg" src="${p.img}" alt="${p.name}"><span class="zoom-hint">🔍 کلیک برای زوم</span></div>
       <div class="pdp-thumbs">
-        <button class="thumb on" data-view="full"><img src="${p.img}" alt="نمای کامل"></button>
-        <button class="thumb v-top" data-view="top"><img src="${p.img}" alt="نمای بالا"></button>
-        <button class="thumb v-zoom" data-view="zoom"><img src="${p.img}" alt="جزئیات"></button>
+        <button class="thumb on" data-src="${p.img}"><img src="${p.img}" alt="نمای محصول"></button>
+        <button class="thumb" data-src="assets/img/d1.jpg"><img src="assets/img/d1.jpg" alt="جنس پارچه" loading="lazy"></button>
+        <button class="thumb" data-src="assets/img/d2.jpg"><img src="assets/img/d2.jpg" alt="تن‌خور" loading="lazy"></button>
       </div>
     </div>
     <div class="pdp-info">
       <span class="pdp-brand">${p.brand} | ${CFG.cats[p.cat]}</span>
       <h1 class="pdp-title">${p.name}</h1>
-      <div class="rating-row">${stars(p.rating)} <b>${FA(p.rating.toLocaleString('fa-IR'))}</b> از ${FA(p.reviews)} دیدگاه <span>•</span> <b>${FA(p.sold)}+</b> فروش موفق</div>
+      <div class="rating-row">${stars(p.rating)} <b>${p.rating.toLocaleString('fa-IR')}</b> از ${FA(p.reviews)} دیدگاه <span>•</span> <b>${FA(p.sold)}+</b> فروش موفق</div>
       <div class="pdp-price"><b>${money(p.price)}</b>${p.old ? `<span class="old">${money(p.old)}</span><span class="save">٪${FA(percent(p))} تخفیف</span>` : ''}</div>
       <p class="stock-note ${lowStock ? 'low' : 'ok'}">${lowStock ? `🔥 فقط ${FA(p.stock)} عدد مونده! عجله کن` : `✓ موجود در انبار (آماده ارسال)`}</p>
       <div class="opt-label">رنگ: <b id="pdpColorName">${pdpSel.color}</b></div>
@@ -423,10 +424,10 @@ function initProduct() {
   const main = $('#pdpMain'), img = $('#pdpImg');
   $$('.thumb').forEach(t => t.addEventListener('click', () => {
     $$('.thumb').forEach(x => x.classList.remove('on')); t.classList.add('on');
-    const v = t.dataset.view;
-    img.style.transform = v === 'full' ? '' : v === 'top' ? 'scale(1.7)' : 'scale(2.1)';
-    img.style.objectPosition = v === 'top' ? 'top' : 'center';
+    main.classList.remove('zoomed'); img.style.transform = '';
+    img.src = t.dataset.src;
   }));
+  main.addEventListener('click', () => main.classList.toggle('zoomed'));
   main.addEventListener('mousemove', e => {
     const r = main.getBoundingClientRect();
     img.style.transformOrigin = `${((e.clientX - r.left) / r.width * 100).toFixed(0)}% ${((e.clientY - r.top) / r.height * 100).toFixed(0)}%`;
