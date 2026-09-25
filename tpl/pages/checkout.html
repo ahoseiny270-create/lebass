@@ -1,0 +1,60 @@
+<!-- {"title": "تسویه حساب", "desc": "تسویه حساب امن فروشگاه مُدرا؛ وارد کردن آدرس، انتخاب روش ارسال و پرداخت آنلاین.", "page": "checkout"} -->
+<div class="page-head">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">خانه</a> / <a href="cart.html">سبد خرید</a> / <span>تسویه حساب</span></nav>
+    <h1>💳 تسویه حساب</h1>
+    <p>فقط چند قدم تا رسیدن سفارشت مونده!</p>
+  </div>
+</div>
+<div class="container">
+  <div class="steps" id="coSteps">
+    <div class="step on"><i>۱</i>اطلاعات ارسال</div>
+    <div class="step"><i>۲</i>روش ارسال و پرداخت</div>
+    <div class="step"><i>۳</i>تایید و ثبت سفارش</div>
+  </div>
+  <div id="coWrap">
+    <div class="co-layout">
+      <div>
+        <div class="co-card">
+          <h3><span class="n">۱</span> آدرس تحویل گیرنده</h3>
+          <div class="form" id="coForm">
+            <div class="two">
+              <label>نام و نام خانوادگی *<input id="coName" placeholder="مثلاً سارا محمدی"></label>
+              <label>شماره موبایل *<input id="coPhone" inputmode="tel" placeholder="09123456789" dir="ltr" style="text-align:start"></label>
+            </div>
+            <div class="two">
+              <label>استان *<select id="coProv"><option>تهران</option><option>البرز</option><option>اصفهان</option><option>فارس</option><option>خراسان رضوی</option><option>آذربایجان شرقی</option><option>خوزستان</option><option>گیلان</option><option>مازندران</option><option>قم</option><option>سایر استان‌ها</option></select></label>
+              <label>شهر *<input id="coCity" placeholder="مثلاً تهران"></label>
+            </div>
+            <label>آدرس کامل *<input id="coAddr" placeholder="خیابان، کوچه، پلاک، واحد…"></label>
+            <div class="two">
+              <label>کد پستی<input id="coPostal" inputmode="numeric" placeholder="۱۰ رقمی (اختیاری)"></label>
+              <label>توضیحات سفارش<input id="coNote" placeholder="اختیاری…"></label>
+            </div>
+          </div>
+        </div>
+        <div class="co-card">
+          <h3><span class="n">۲</span> روش ارسال</h3>
+          <div class="pay-methods" id="shipMethods">
+            <label class="pay-card on" data-ship="std"><input type="radio" name="ship" checked><span class="pm-ic">🚚</span><div><b>ارسال عادی (۲ تا ۴ روز کاری)</b><small>۶۰ هزار تومان — رایگان برای خرید بالای ۸۰۰ هزار تومان 🎉</small></div></label>
+            <label class="pay-card" data-ship="exp"><input type="radio" name="ship"><span class="pm-ic">⚡</span><div><b>ارسال پیشتاز (۱ تا ۲ روز کاری)</b><small>۱۲۰ هزار تومان — اولویت بسته‌بندی و ارسال</small></div></label>
+          </div>
+        </div>
+        <div class="co-card">
+          <h3><span class="n">۳</span> روش پرداخت</h3>
+          <div class="pay-methods" id="payMethods">
+            <label class="pay-card on" data-pay="online"><input type="radio" name="pay" checked><span class="pm-ic">💳</span><div><b>پرداخت آنلاین</b><small>درگاه امن بانکی (شتاب) — سریع و امن</small></div></label>
+            <label class="pay-card" data-pay="card"><input type="radio" name="pay"><span class="pm-ic">🏧</span><div><b>کارت به کارت</b><small>شماره کارت بعد از ثبت سفارش پیامک می‌شود</small></div></label>
+            <label class="pay-card" data-pay="cod"><input type="radio" name="pay"><span class="pm-ic">💵</span><div><b>پرداخت در محل</b><small>فقط تهران و کرج — موقع تحویل پرداخت کن</small></div></label>
+          </div>
+        </div>
+      </div>
+      <aside class="cart-side">
+        <h3 style="font-size:16px;margin-bottom:14px">🧾 خلاصه سفارش</h3>
+        <div id="orderSummary"></div>
+        <button class="btn btn-accent full" id="placeOrder" style="margin-top:14px">ثبت سفارش و پرداخت ←</button>
+        <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px">🔒 با ثبت سفارش، <a href="faq.html" style="font-weight:700">قوانین خرید و مرجوعی</a> را می‌پذیرید.</p>
+      </aside>
+    </div>
+  </div>
+</div>

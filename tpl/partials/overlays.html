@@ -1,0 +1,108 @@
+<!-- ══════════ OVERLAYS ══════════ -->
+<div class="backdrop" id="backdrop"></div>
+
+<!-- سبد خرید -->
+<aside class="drawer" id="drawer-cart" aria-label="سبد خرید">
+  <div class="drawer-head"><h3>سبد خرید <span class="count-pill" id="cartDrawerCount">۰ کالا</span></h3><button class="icon-btn" data-close aria-label="بستن"><svg viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <div class="ship-progress"><p id="shipMsg"></p><div class="ship-bar"><span id="shipBar"></span></div></div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot" id="cartFoot"></div>
+</aside>
+
+<!-- منوی موبایل -->
+<aside class="drawer right" id="drawer-menu" aria-label="منو">
+  <div class="drawer-head"><a href="index.html" class="logo"><span class="logo-mark">M</span><span class="logo-txt">مُدرا</span></a><button class="icon-btn" data-close aria-label="بستن"><svg viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+  <nav class="menu-links">
+    <a href="index.html">خانه</a>
+    <a href="shop.html">🛍 همه محصولات</a>
+    <a href="shop.html?cat=women">👒 زنانه</a>
+    <a href="shop.html?cat=men">🤵 مردانه</a>
+    <a href="shop.html?cat=shoes">👟 کفش</a>
+    <a href="shop.html?cat=accessory">👜 اکسسوری</a>
+    <a href="shop.html?sale=1" class="hot">🔥 شگفت‌انگیزها</a>
+    <a href="blog.html">📖 مجله مُدرا</a>
+    <a href="track.html">📦 پیگیری سفارش</a>
+    <a href="about.html">درباره ما</a>
+    <a href="contact.html">تماس با ما</a>
+  </nav>
+  <div class="menu-foot"><p>پشتیبانی: <span dir="ltr">۰۲۱-۹۱۰۰۹۰۰۰</span></p></div>
+</aside>
+
+<!-- جستجو -->
+<div class="search-wrap" id="searchWrap">
+  <div class="container">
+    <button class="icon-btn search-close" data-close aria-label="بستن"><svg viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" class="ic"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" id="searchInput" placeholder="دنبال چی می‌گردی؟ (مثلاً: مانتو، کتانی، کیف…)" autocomplete="off">
+    </div>
+    <div class="search-tags"><span>پیشنهادها:</span><button>مانتو</button><button>کتانی سفید</button><button>هودی</button><button>کیف چرم</button><button>تخفیف</button></div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- مشاهده سریع -->
+<div class="modal" id="modal-quick"><div class="modal-card qv" id="qvBody"></div></div>
+
+<!-- راهنمای سایز -->
+<div class="modal" id="modal-size">
+  <div class="modal-card">
+    <div class="modal-head"><h3>📏 راهنمای انتخاب سایز</h3><button class="icon-btn" data-close aria-label="بستن"><svg viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="tabs mini"><button class="tab on" data-tab="sizeW">زنانه</button><button class="tab" data-tab="sizeM">مردانه</button></div>
+    <div class="tabpanel on" id="tp-sizeW">
+      <table class="size-table"><tr><th>سایز</th><th>دور سینه</th><th>دور کمر</th><th>دور باسن</th></tr>
+      <tr><td>S</td><td>۸۴-۸۸</td><td>۶۶-۷۰</td><td>۹۲-۹۶</td></tr>
+      <tr><td>M</td><td>۸۸-۹۲</td><td>۷۰-۷۴</td><td>۹۶-۱۰۰</td></tr>
+      <tr><td>L</td><td>۹۲-۹۷</td><td>۷۴-۸۰</td><td>۱۰۰-۱۰۵</td></tr>
+      <tr><td>XL</td><td>۹۷-۱۰۲</td><td>۸۰-۸۶</td><td>۱۰۵-۱۱۰</td></tr></table>
+    </div>
+    <div class="tabpanel" id="tp-sizeM">
+      <table class="size-table"><tr><th>سایز</th><th>دور سینه</th><th>دور کمر</th><th>قد آستین</th></tr>
+      <tr><td>S</td><td>۹۲-۹۶</td><td>۷۶-۸۰</td><td>۶۰</td></tr>
+      <tr><td>M</td><td>۹۶-۱۰۰</td><td>۸۰-۸۴</td><td>۶۲</td></tr>
+      <tr><td>L</td><td>۱۰۰-۱۰۵</td><td>۸۴-۸۹</td><td>۶۴</td></tr>
+      <tr><td>XL</td><td>۱۰۵-۱۱۰</td><td>۸۹-۹۴</td><td>۶۶</td></tr></table>
+    </div>
+    <p class="hint">💡 بین دو سایز مرددی؟ سایز بزرگ‌تر رو بگیر؛ مرجوعی تا ۷ روز رایگانه!</p>
+  </div>
+</div>
+
+<!-- ورود / ثبت‌نام -->
+<div class="modal" id="modal-auth">
+  <div class="modal-card sm">
+    <div class="modal-head"><h3>👋 خوش اومدی به مُدرا</h3><button class="icon-btn" data-close aria-label="بستن"><svg viewBox="0 0 24 24" class="ic"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+    <div class="tabs"><button class="tab on" data-tab="login">ورود</button><button class="tab" data-tab="register">ثبت‌نام</button></div>
+    <div class="tabpanel on" id="tp-login">
+      <form class="form" data-fake="خوش برگشتی! 🎉 (دمو)">
+        <label>شماره موبایل<input type="tel" placeholder="۰۹۱۲…" required pattern="09[0-9]{9}"></label>
+        <label>رمز عبور<input type="password" placeholder="••••••••" required minlength="4"></label>
+        <button class="btn btn-dark full" type="submit">ورود به حساب</button>
+      </form>
+    </div>
+    <div class="tabpanel" id="tp-register">
+      <form class="form" data-fake="ثبت‌نام انجام شد! کد WELCOME10 برای تو 🎁">
+        <label>نام و نام خانوادگی<input type="text" placeholder="مثلاً سارا محمدی" required></label>
+        <label>شماره موبایل<input type="tel" placeholder="۰۹۱۲…" required pattern="09[0-9]{9}"></label>
+        <label>رمز عبور<input type="password" placeholder="حداقل ۶ کاراکتر" required minlength="6"></label>
+        <button class="btn btn-dark full" type="submit">ساخت حساب + دریافت ۱۰٪ تخفیف</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- پنل دمو (قابل حذف توسط خریدار) -->
+<button class="demo-fab" id="demoFab" aria-label="تنظیمات دمو">🎨</button>
+<div class="demo-panel" id="demoPanel">
+  <h4>🎨 شخصی‌سازی دمو</h4>
+  <p>رنگ قالب:</p>
+  <div class="skins">
+    <button data-skin="gold" class="skin on" style="--s:#b9862f" aria-label="طلایی"></button>
+    <button data-skin="rose" class="skin" style="--s:#c2406a" aria-label="رز"></button>
+    <button data-skin="emerald" class="skin" style="--s:#1d7a5f" aria-label="زمردی"></button>
+    <button data-skin="navy" class="skin" style="--s:#2b4c9b" aria-label="سرمه‌ای"></button>
+  </div>
+  <a href="#" class="btn btn-dark full sm" id="buyThemeLink">💎 خرید این قالب</a>
+  <small>نسخه دمو — همه امکانات فعال است</small>
+</div>
+
+<div class="toasts" id="toasts"></div>

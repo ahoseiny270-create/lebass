@@ -1,0 +1,45 @@
+<!-- {"title": "فروشگاه", "desc": "همه محصولات فروشگاه مُدرا؛ پوشاک زنانه، مردانه، کفش و اکسسوری با فیلتر حرفه‌ای و قیمت منصفانه.", "page": "shop"} -->
+<div class="page-head">
+  <div class="container">
+    <nav class="breadcrumb"><a href="index.html">خانه</a> / <span>فروشگاه</span></nav>
+    <h1>🛍 فروشگاه مُدرا</h1>
+    <p id="shopQ">همه محصولات — با فیلتر دقیق، سریع به سلیقه‌ت برس</p>
+  </div>
+</div>
+<div class="container" id="shopTop">
+  <div class="shop-layout">
+    <aside class="filters" id="shopFilters">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <h3 style="font-size:16px">🎛 فیلترها</h3>
+        <div style="display:flex;gap:8px"><button id="clearFilters" style="font-size:12px;color:var(--sale);font-weight:700">حذف همه ✕</button><button id="filtersClose" class="icon-btn filter-fab" aria-label="بستن">✕</button></div>
+      </div>
+      <div class="filter-group"><h4>دسته‌بندی</h4><div id="fCats"></div></div>
+      <div class="filter-group"><h4>برند</h4><div id="fBrands"></div></div>
+      <div class="filter-group"><h4>محدوده قیمت</h4>
+        <input type="range" id="priceMax" min="400000" max="5000000" step="100000" value="5000000">
+        <div class="price-out" id="priceOut">تا ۵٬۰۰۰٬۰۰۰ تومان</div>
+      </div>
+      <div class="filter-group"><h4>سایز</h4><div class="size-pick" id="fSizes"></div></div>
+      <div class="filter-group"><h4>رنگ</h4><div class="swatches" id="fColors"></div></div>
+      <div class="filter-group"><label class="fcheck"><input type="checkbox" id="onlySale"> فقط تخفیف‌دارها 🔥</label></div>
+    </aside>
+    <div>
+      <div class="toolbar">
+        <button class="btn btn-ghost sm filter-fab" id="filterFab">🎛 فیلترها</button>
+        <span class="count" id="resultCount"></span>
+        <label class="sort-select">مرتب‌سازی:
+          <select id="sortSelect">
+            <option value="newest">جدیدترین</option>
+            <option value="popular">پرفروش‌ترین</option>
+            <option value="rating">بالاترین امتیاز</option>
+            <option value="cheap">ارزان‌ترین</option>
+            <option value="expensive">گران‌ترین</option>
+          </select>
+        </label>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="grid-products shop-grid" id="shopGrid"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+</div>
